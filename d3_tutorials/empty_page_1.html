@@ -1,0 +1,34 @@
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>D3 Test</title>
+    </head>
+    <body>
+		<H1> Dit is een lege pagina </H1>
+		<button onclick="ledAan()">Led Aan</button>
+		<button onclick="ledUit()">Led Uit</button>
+		<script type="text/javascript">
+		window.onload = initWS;
+		var ws = new WebSocket("ws://10.0.0.34:8888/ws");
+		ws.onclose = function(){ alert("Connection Closed!");};
+
+		function initWS()
+		{
+			alert("Websocket opening...");
+		}
+		
+		function ledAan()
+		{
+			ws.send("1");
+		}
+		function ledUit()
+		{
+			ws.send("0");
+		}
+		function ConnectionError()
+		{
+			alert("Connection Error!");
+		}
+		</script>
+    </body>
+</html>
